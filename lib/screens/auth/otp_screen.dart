@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../blocs/auth/auth_bloc.dart';
-import '../blocs/auth/auth_event.dart';
-import '../blocs/auth/auth_state.dart';
+import '../../blocs/auth/auth_bloc.dart';
+import '../../blocs/auth/auth_event.dart';
+import '../../blocs/auth/auth_state.dart';
 
 class OTPScreen extends StatefulWidget {
   final String verificationId;
@@ -50,7 +50,10 @@ class _OTPScreenState extends State<OTPScreen> {
             setState(() => _isLoading = false);
           }
 
-          if (state is AuthError) {
+          if (state is Authenticated) {
+            // Pop back to let AuthWrapper show HomeScreen
+            Navigator.pop(context);
+          } else if (state is AuthError) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text(state.message),

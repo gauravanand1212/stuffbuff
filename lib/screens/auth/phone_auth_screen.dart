@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../blocs/auth/auth_bloc.dart';
-import '../blocs/auth/auth_event.dart';
-import '../blocs/auth/auth_state.dart';
+import '../../blocs/auth/auth_bloc.dart';
+import '../../blocs/auth/auth_event.dart';
+import '../../blocs/auth/auth_state.dart';
 import 'otp_screen.dart';
 
 class PhoneAuthScreen extends StatefulWidget {
@@ -96,7 +96,7 @@ class _PhoneAuthScreenState extends State<PhoneAuthScreen> {
                   
                   // Title
                   Text(
-                    'Welcome to ToolShare',
+                    'Welcome to StuffBuff',
                     style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                           fontWeight: FontWeight.bold,
                         ),

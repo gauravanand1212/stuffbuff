@@ -1,6 +1,6 @@
 # Firebase Setup Guide
 
-This guide will walk you through setting up Firebase for the ToolShare app.
+This guide will walk you through setting up Firebase for the StuffBuff app.
 
 ## Prerequisites
 
@@ -12,7 +12,7 @@ This guide will walk you through setting up Firebase for the ToolShare app.
 
 1. Go to [Firebase Console](https://console.firebase.google.com/)
 2. Click "Add project"
-3. Enter a project name (e.g., "toolshare-app")
+3. Enter a project name (e.g., "stuffbuff-app")
 4. Choose whether to enable Google Analytics (recommended)
 5. Accept terms and create the project
 
@@ -21,7 +21,7 @@ This guide will walk you through setting up Firebase for the ToolShare app.
 ### For Android:
 
 1. In Firebase Console, click the Android icon to add an Android app
-2. Enter your Android package name (e.g., `com.example.toolshare`)
+2. Enter your Android package name (e.g., `com.example.stuffbuff`)
 3. Enter a nickname (optional)
 4. Download `google-services.json`
 5. Place it in `android/app/`
@@ -29,7 +29,7 @@ This guide will walk you through setting up Firebase for the ToolShare app.
 ### For iOS:
 
 1. Click the iOS icon to add an iOS app
-2. Enter your iOS bundle ID (e.g., `com.example.toolshare`)
+2. Enter your iOS bundle ID (e.g., `com.example.stuffbuff`)
 3. Enter a nickname (optional)
 4. Download `GoogleService-Info.plist`
 5. Place it in `ios/Runner/` using Xcode (right-click Runner folder → Add Files)

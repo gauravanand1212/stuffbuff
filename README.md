@@ -1,4 +1,4 @@
-# ToolShare - P2P Tool Rental Marketplace
+# StuffBuff - P2P Tool Rental Marketplace
 
 A Flutter-based peer-to-peer tool rental marketplace MVP. Users can list their tools for rent, browse available tools, and request rentals from neighbors in their community.
 
@@ -99,7 +99,7 @@ lib/
 1. **Clone the repository**
    ```bash
    git clone <repository-url>
-   cd toolshare
+   cd stuffbuff
    ```
 
 2. **Install dependencies**

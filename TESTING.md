@@ -1,4 +1,4 @@
-# Testing ToolShare Locally
+# Testing StuffBuff Locally
 
 ## Option 1: Firebase Emulator Suite (Recommended for Testing)
 
@@ -46,7 +46,7 @@ void main() async {
   FirebaseFirestore.instance.useFirestoreEmulator('localhost', 8080);
   await FirebaseStorage.instance.useStorageEmulator('localhost', 9199);
   
-  runApp(const ToolShareApp());
+  runApp(const StuffBuffApp());
 }
 ```
 
@@ -179,14 +179,14 @@ Add to `test/widget_test.dart`:
 ```dart
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:toolshare/main.dart';
+import 'package:stuffbuff/main.dart';
 
 void main() {
   testWidgets('App launches and shows auth screen', (WidgetTester tester) async {
-    await tester.pumpWidget(const ToolShareApp());
+    await tester.pumpWidget(const StuffBuffApp());
     
     // Should show phone auth screen initially
-    expect(find.text('Welcome to ToolShare'), findsOneWidget);
+    expect(find.text('Welcome to StuffBuff'), findsOneWidget);
     expect(find.text('Continue'), findsOneWidget);
   });
 }

@@ -176,8 +176,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             radius: 60,
                             backgroundColor: Theme.of(context).colorScheme.primaryContainer,
                             backgroundImage: _selectedImage != null
-                                ? FileImage(_selectedImage!)
-                                : (user.photoUrl != null ? NetworkImage(user.photoUrl!) : null),
+                                ? FileImage(_selectedImage!) as ImageProvider
+                                : (user.photoUrl != null ? NetworkImage(user.photoUrl!) as ImageProvider : null),
                             child: _selectedImage == null && user.photoUrl == null
                                 ? Icon(
                                     Icons.person,
@@ -359,9 +359,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       onTap: () {
                         showAboutDialog(
                           context: context,
-                          applicationName: 'ToolShare',
+                          applicationName: 'StuffBuff',
                           applicationVersion: '1.0.0',
-                          applicationLegalese: '© 2026 ToolShare',
+                          applicationLegalese: '© 2026 StuffBuff',
                         );
                       },
                     ),

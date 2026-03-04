@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../models/tool.dart';
-import 'request_rental_screen.dart';
+import '../rental/request_rental_screen.dart';
 
 class ToolDetailScreen extends StatelessWidget {
   final Tool tool;

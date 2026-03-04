@@ -65,7 +65,7 @@ class Tool {
   });
 
   factory Tool.fromFirestore(DocumentSnapshot doc) {
-    final data = doc.data() as Map<String, dynamic>;
+    final data = doc.data() as Map<String, dynamic>? ?? {};
     return Tool(
       id: doc.id,
       ownerId: data['ownerId'] ?? '',
@@ -76,9 +76,9 @@ class Tool {
         (e) => e.toString() == data['category'],
         orElse: () => ToolCategory.other,
       ),
-      images: List<String>.from(data['images'] ?? []),
+      images: (data['images'] as List<dynamic>?)?.cast<String>() ?? [],
       isAvailable: data['isAvailable'] ?? true,
-      createdAt: (data['createdAt'] as Timestamp).toDate(),
+      createdAt: (data['createdAt'] as Timestamp?)?.toDate() ?? DateTime.now(),
       location: data['location'],
       rating: data['rating']?.toDouble(),
     );

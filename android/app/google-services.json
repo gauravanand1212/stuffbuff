@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "992298341345",
+    "project_id": "stuff-buff",
+    "storage_bucket": "stuff-buff.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:992298341345:android:edd49340053b4fd1e638a0",
+        "android_client_info": {
+          "package_name": "com.android.stuffbuff"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDM6aFlw7hdjiMCBgLMB9syUyWzFs-lOuY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

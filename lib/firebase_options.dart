@@ -54,7 +54,7 @@ class DefaultFirebaseOptions {
     projectId: 'toolshare-mvp',
     storageBucket: 'toolshare-mvp.appspot.com',
     iosClientId: 'YOUR_IOS_CLIENT_ID',
-    iosBundleId: 'com.example.toolshare',
+    iosBundleId: 'com.example.stuffbuff',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
@@ -64,7 +64,7 @@ class DefaultFirebaseOptions {
     projectId: 'toolshare-mvp',
     storageBucket: 'toolshare-mvp.appspot.com',
     iosClientId: 'YOUR_MACOS_CLIENT_ID',
-    iosBundleId: 'com.example.toolshare',
+    iosBundleId: 'com.example.stuffbuff',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(

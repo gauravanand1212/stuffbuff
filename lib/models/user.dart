@@ -20,13 +20,13 @@ class AppUser {
   });
 
   factory AppUser.fromFirestore(DocumentSnapshot doc) {
-    final data = doc.data() as Map<String, dynamic>;
+    final data = doc.data() as Map<String, dynamic>? ?? {};
     return AppUser(
       id: doc.id,
       phoneNumber: data['phoneNumber'] ?? '',
       displayName: data['displayName'],
       photoUrl: data['photoUrl'],
-      createdAt: (data['createdAt'] as Timestamp).toDate(),
+      createdAt: (data["createdAt"] as Timestamp?)?.toDate() ?? DateTime.now(),
       rating: data['rating']?.toDouble(),
       rentalCount: data['rentalCount'] ?? 0,
     );

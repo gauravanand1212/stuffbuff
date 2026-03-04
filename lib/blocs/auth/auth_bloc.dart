@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../services/auth_service.dart';
 import 'auth_event.dart';
@@ -16,7 +17,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<ProfileUpdated>(_onProfileUpdated);
   }
 
-  void _onAppStarted(AppStarted event, Emitter<AuthState> emit) async {
+  Future<void> _onAppStarted(AppStarted event, Emitter<AuthState> emit) async {
     emit(AuthLoading());
     
     await emit.forEach(
@@ -31,24 +32,40 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     );
   }
 
-  void _onPhoneNumberSubmitted(
+  Future<void> _onPhoneNumberSubmitted(
     PhoneNumberSubmitted event,
     Emitter<AuthState> emit,
   ) async {
     emit(AuthLoading());
 
+    // Use Completer to properly await async callbacks
+    final completer = Completer<void>();
+    String? errorResult;
+    String? verificationIdResult;
+
     await _authService.verifyPhoneNumber(
       phoneNumber: event.phoneNumber,
       onCodeSent: (verificationId) {
-        emit(PhoneVerificationSent(verificationId));
+        verificationIdResult = verificationId;
+        if (!completer.isCompleted) completer.complete();
       },
       onError: (error) {
-        emit(AuthError(error));
+        errorResult = error;
+        if (!completer.isCompleted) completer.complete();
       },
     );
+
+    await completer.future;
+
+    if (errorResult != null) {
+      emit(AuthError(errorResult!));
+      emit(Unauthenticated());
+    } else if (verificationIdResult != null) {
+      emit(PhoneVerificationSent(verificationIdResult!));
+    }
   }
 
-  void _onOTPSubmitted(OTPSubmitted event, Emitter<AuthState> emit) async {
+  Future<void> _onOTPSubmitted(OTPSubmitted event, Emitter<AuthState> emit) async {
     emit(AuthLoading());
 
     try {
@@ -61,19 +78,21 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         emit(Authenticated(user));
       } else {
         emit(const AuthError('Failed to verify OTP'));
+        emit(Unauthenticated());
       }
     } catch (e) {
       emit(AuthError(e.toString()));
+      emit(Unauthenticated());
     }
   }
 
-  void _onLoggedOut(LoggedOut event, Emitter<AuthState> emit) async {
+  Future<void> _onLoggedOut(LoggedOut event, Emitter<AuthState> emit) async {
     emit(AuthLoading());
     await _authService.signOut();
     emit(Unauthenticated());
   }
 
-  void _onProfileUpdated(ProfileUpdated event, Emitter<AuthState> emit) async {
+  Future<void> _onProfileUpdated(ProfileUpdated event, Emitter<AuthState> emit) async {
     if (state is Authenticated) {
       final currentUser = (state as Authenticated).user;
       emit(AuthLoading());
